@@ -1,0 +1,75 @@
+{% macro render_field(field) %}
+  <div class="row">
+    <div class="col-md-8">
+        {{ field}}
+    </div>
+  <div class="col-md-12">
+    {{ field(**kwargs)|safe }}
+  </div>
+
+  </div>
+
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+
+{% macro render_text(field) %}
+  <dt>{{ field.label }}
+  <p>{{ field.data (**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+{% macro render_text1(field) %}
+  <dt>{{ field.label }}
+
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+{% macro render_ingredents(field)   %}
+<div class="col-md-4 form-control" , placeholder="Vodka">
+  {# {{ field.data (**kwargs)|safe }} #}
+  {% for d in  field.data %}
+    {{d}}
+  {% endfor %}}
+</div>
+ <div class="row">
+  <div class="col-md-4">
+    {{render_field(form.ounce,class='form-control' ,placeholder="Vodka")}}
+  </div>
+</div>
+
+{% endmacro %}
+
+{% macro render_name(field) %}
+  {{ field.label("Cocktail Name") }}
+  {{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endmacro %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}
+<title>Cocktails</title>
+{% endblock %}
+
+{% block script %}
+
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mx-auto" style="width: 300px;">
+        {% if form   %}
+        <h1>Update Cocktail</h1>
+        {% else %}
+        <h1>New Cocktail</h1>
+        {% endif %}
+    </div>
+</div>
+  <hr>
+<div class="container p-3 mb-2 bg-info text-black">
+    <form class="center row g-3" action="#" method="post">
+      {{ form.csrf_token }}
+
+      </div>
+      <div class="row">
+          <div class="col-md-2">
+          {{form}}
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  {% endblock %}
+</div>

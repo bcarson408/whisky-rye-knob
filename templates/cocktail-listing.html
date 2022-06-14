@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="container table table-striped table-hover center">
+  <thead>
+    <th>Cocktails</th>
+    <th>Directions</th>
+  </thead>
+<tbody>
+{% for drink in data %}
+<tr>
+  <td>{{drink["name"]}}</td>
+  <td>{{drink["directions"]}}</td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
+ 

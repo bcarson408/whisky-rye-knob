@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Home Page  </title>
+  </head>
+  <body>
+    <h1> Home Page </h1>
+    {% for cocktail in old_data %}
+      <h1>{{cocktail.name}}</h1>
+      <table>
+        <thead>
+          <th>ingredients</th>
+          <th>ounces</th>
+        </thead>
+        <tr>
+          <td>{{cocktail.ingredient}}</td>
+          <td>{{cocktail.ounces}}</td>
+        </tr>
+      </table>
+    {% endfor %}
+  </body>
+</html>

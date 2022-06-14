@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field,render_text1,render_ingredents,render_name %}
+
+{% block title %}
+<title>Cocktails</title>
+{% endblock %}
+{% block navbarbrand %}
+{% if form.id  %}
+  <h3>Update Cocktail</h3>
+        {{form.data}}
+{% else %}
+  <h3>New Cocktail</h3>
+{% endif %}
+
+  {% endblock %}
+{% block content %}
+
+
+<div class="d-flex p-3 mb-2 align-content-center justify-content-center">
+    <form class="center row g-3 " action="#" method="post">
+      {{ form.csrf_token }}
+      <div class="row">
+          <div class="col-md-2">
+              {{render_name(form.name,class='form-control' ,placeholder="Ball Breaker")}}
+          </div>
+      </div>
+<hr>
+      {% for cocktail_ingredient_field in form.cocktail_ingredient %}
+        <tr class="card">
+          <td class="card-body col-md-6">
+            {{cocktail_ingredient_field.label("Liquor Pour #")}}
+            {# {{render_field(form.cocktail_ingredient.pop_entry())}} #}
+          </td>
+          <div class="card-data">
+            {{cocktail_ingredient_field}}
+          </div>
+        </tr>
+
+      {% endfor %}
+      {# <div class="row"  >
+        <div id="extra_ingredient" >
+
+        </div>
+      </div>
+      <div class="button">
+        <button id=add type="button" name="button">add</button>
+      </div> #}
+      <div class="col-md-2">
+          {{render_field(form.garnish,class='form-control' ,placeholder="Lime"  )}}
+      </div>
+      <div class="col-md-2">
+        {{render_field(form.glassware,class='form-control' ,placeholder="Collins"  )}}
+      </div>
+      <div class="row">
+          <div class="col-md-9">
+            {{render_field(form.directions,class='form-control' ,placeholder="Fill glass with ice."  )}}
+          </div>
+          <div class="">
+            <hr>
+            {{form.submit()}}
+          </div>
+  </div>
+    </form>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+  var max_input_fields = 10;
+  var add_input = $('.button');
+  var input_wrapper = $('#extra_ingredient');
+  var new_input = '<div class="col-md-6">   {{form.data}} </br></div>';
+  var add_input_count = 1
+  $(add_input).click(function() {
+    $(input_wrapper).append(new_input);
+  });
+
+
+   // Stuff to do as soon as the DOM is ready
+});
+
+</script>
+  {% endblock %}

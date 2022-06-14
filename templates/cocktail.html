@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container w-50 " align="center">
+  <div class="card w-75 position-relative top 50">
+    <div class="card-header w-100 " align="center">
+      {{data.name}}
+
+    </div>
+    <table class="table table-striped table-hover">
+      <tbody>
+        {{ data.cocktail_ingredient}}
+      {% for key in data.cocktail_ingredient %}
+        {% if 'ingredient' in key and key !=''%}
+            <tr>
+              <td>{{key.ingredient}}</td>
+              <td>{{key.ounce}}</td>
+            </tr>
+        {% endif %}
+      {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Glassware :</th>
+          <th> Garnish</th>
+        </tr>
+        <tr>
+        <td> <div class="card-text col-md-6">
+            {% if data['glassware'] == "" %}
+              No Glassware
+              {% else %}
+              {{data['glassware']}}
+              {% endif %}
+          </div></td>
+        <td>  <div class="col-md-6">
+            {% if data['garnish'] == "" %}
+              No Garnis
+              {% else %}
+              {{data['garnish']}}
+              {% endif %}
+          </div></td>
+        </tr>
+<tr>
+    <th>{{data['directions']}}</th>
+</tr>
+<tr>
+  <td> <a class="btn btn-primary" href="{{ url_for('delete',cocktail=data['name'])}}" role="button">{{data.name}}</a></td>
+  <td><a class="btn btn-primary" href="{{ url_for('update',cocktail=data['name'])}}" role="button">update</a></td>
+</tr>
+
+
+{% endblock %}
